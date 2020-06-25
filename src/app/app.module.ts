@@ -31,9 +31,10 @@ import { MenuComponent } from "./components/menu/menu.component";
 import { InicioComponent } from "./components/inicio/inicio.component";
 import { ArticulosComponent } from "./components/articulos/articulos.component";
 import { ArticulosFamiliasComponent } from "./components/articulos-familias/articulos-familias.component";
-
 import { registerLocaleData } from "@angular/common";
 import localeEs from "@angular/common/locales/es-AR";
+import { EquiposComponent } from './equipos/equipos.component';
+import { EquiposService } from './equipos.service';
 
 registerLocaleData(localeEs, "es");
 
@@ -47,7 +48,8 @@ registerLocaleData(localeEs, "es");
     InicioComponent,
     ArticulosComponent,
     ArticulosFamiliasComponent,
-    Test1Component
+    Test1Component,
+    EquiposComponent
   ],
   imports: [
     BrowserModule,
@@ -61,7 +63,8 @@ registerLocaleData(localeEs, "es");
       { path: 'inicio', component: InicioComponent },
       { path: 'articulos', component: ArticulosComponent },
       { path: 'articulosfamilias', component: ArticulosFamiliasComponent },
-      { path: 'test1', component: Test1Component }
+      { path: 'test1', component: Test1Component },
+      { path: "equipos", component: EquiposComponent }
     ])
   ],
   entryComponents: [ModalFormComponent],
@@ -72,7 +75,7 @@ registerLocaleData(localeEs, "es");
     { provide: NgbDateParserFormatter, useClass: NgbDateEsParserFormatter },
     I18n,
     { provide: NgbDatepickerI18n, useClass: DatepickerEsI18n},
-    {provide: APP_BASE_HREF, useValue : '/' }
+    {provide: APP_BASE_HREF, useValue : '/', providers: [EquiposService] }
   ],
   bootstrap: [AppComponent]
 })
